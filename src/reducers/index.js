@@ -2,7 +2,9 @@
 ** TODO: use combineReducers when we have more than one reducer */ 
 
 const initialState = {
-  user_projects: null
+  projects: null,
+  isFetching: false,
+  error: ''
 };
 
 const projectsReducer = (state = initialState, action) => {
