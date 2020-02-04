@@ -6,7 +6,7 @@ const axiosWithAuth = () => {
   const token = localStorage.getItem('token');
 
   return axios.create({
-    baseURL: 'https://restaurantpassport1.herokuapp.com',
+    baseURL: 'https://sprint-challenge-authenticat.herokuapp.com/api',
     headers: {
       Authorization: token
     }
