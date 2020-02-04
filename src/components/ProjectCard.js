@@ -3,7 +3,7 @@ import { Grid, Card, CardContent, Typography, CardActions, Button } from '@mater
 import { makeStyles } from '@material-ui/core/styles';
 
 const ProjectCard = ({ project }) => {
-  const useStyles = makeStyles(theme => ({
+  const useStyles = makeStyles(() => ({
     card: {
       height: '100%',
       display: 'flex',
