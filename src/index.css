@@ -89,12 +89,20 @@ code {
 
 .check {
   margin-left: 30px;
+  color: gray;
 }
 
 /*--------------------------------extra stuff---------------------------*/
 
 span {
   margin-left: 30px;
+  color: gray;
+}
+
+.signin{
+  text-align: center;
+  margin-right: 25px;
+  margin-top: 20px;
 }
 
 input {
@@ -108,12 +116,12 @@ select {
 .button {
   display: block;
   margin: auto;
-  width: 200px;
+  width: 300px;
   height: 60px;
   color: #fff;
   font-size: 16px;
   font-family: "Raleway", sans-serif;
-  margin-top: 100px;
+  margin-top: 60px;
   background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
   background-size: 400%;
   border-radius: 100px;
@@ -137,3 +145,8 @@ select {
   margin: auto;
   margin-top: 80px;
 }
+
+a{
+  text-decoration: none;
+}
+

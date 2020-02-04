@@ -83,7 +83,7 @@ const Signup = ({values, errors, touched, status}) => {
         </DOB>
 
         <CheckBox>
-          <Field type="checkbox" name="male" check="values.Male" />{"Male"}
+          <Field className="check" type="checkbox" name="male" check="values.Male" />{"Male"}
           
           <Field className="check" type="checkbox" name="Female" check="values.Female" />{"Female"}
           
@@ -97,11 +97,14 @@ const Signup = ({values, errors, touched, status}) => {
         </CheckBox>
 
         <button type="submit" className="button">SIGN UP</button>
-        
+
+        <div className="signin">
+        <span>Already have an account?</span> <a href="">sign in here</a>  
+        </div> 
         </Form>
     </div>
   );
-};
+};                                                      //^^^ ADD THE LINK RIGHT THERE
 
 const SignUpForm = withFormik({
   mapPropsToValues({ Email, Password, ConfirmPassword, Username, Month, Day, Year}) {
