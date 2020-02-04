@@ -1,13 +1,152 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.All {
+  border-top: 1px solid silver;
+  margin: auto;
+  max-width: 550px;
+  margin-top: 50px;
+  height: 80vh;
+}
+
+/*--------------------------------STYLING FOR MAIN COLUMN------------------------------------*/
+
+.beef1 {
+  font-size: 16px;
+  width: 80%;
+  padding: 2.5%;
+  font-family: "Raleway", sans-serif;
+  margin-top: 20px;
+}
+
+.beef2 {
+  font-size: 16px;
+  width: 80%;
+  padding: 2.5%;
+  font-family: "Raleway", sans-serif;
+  margin-top: 20px;
+}
+
+.beef3 {
+  font-size: 16px;
+  width: 80%;
+  padding: 2.5%;
+  font-family: "Raleway", sans-serif;
+  margin-top: 20px;
+}
+
+.beef4 {
+  font-size: 16px;
+  width: 80%;
+  padding: 2.5%;
+  font-family: "Raleway", sans-serif;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/*--------------------------------STYLING FOR DATE OF BIRTH ROW---------------------------*/
+
+.DOB1 {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  width: 30%;
+  padding: 1.5%;
+  margin-left: 35px;
+  opacity: 80%;
+}
+
+.DOB2 {
+  font-family: "Raleway", sans-serif;
+  width: 15%;
+  padding: 1.5%;
+  font-size: 16px;
+  margin-left: 30px;
+}
+
+.DOB3 {
+  font-family: "Raleway", sans-serif;
+  padding: 1.5%;
+  font-size: 16px;
+  margin-left: 30px;
+  width: 20%;
+}
+
+/*--------------------------------STYLING FOR CHECKBOXES---------------------------*/
+
+.check {
+  margin-left: 30px;
+  color: gray;
+}
+
+/*--------------------------------extra stuff---------------------------*/
+
+span {
+  margin-left: 30px;
+  color: gray;
+}
+
+.signin{
+  text-align: center;
+  margin-right: 25px;
+  margin-top: 20px;
+}
+
+input {
+  border: none;
+}
+
+select {
+  border: none;
+}
+
+.button {
+  display: block;
+  margin: auto;
+  width: 300px;
+  height: 60px;
+  color: #fff;
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+  margin-top: 60px;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 100px;
+}
+
+.button:hover {
+  animation: animate 8s linear infinite;
+}
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+
+.logo {
+  width: 15%;
+  display: block;
+  margin: auto;
+  margin-top: 80px;
+}
+
+a{
+  text-decoration: none;
+}
+
