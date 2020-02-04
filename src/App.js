@@ -6,6 +6,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
+import ProjectView from "./components/ProjectView";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Switch>
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/" component={Home} />
+          <Route path={"/project"} component={ProjectView}/>
         </Switch>
       </Router>
       </CssBaseline>
