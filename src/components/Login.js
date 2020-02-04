@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
-
+import axiosWithAuth from '../utils/axiosWithAuth';
 
   const Login = ({ errors, touched, status }) => {
     const [login, setLogin] = useState([]);
@@ -42,6 +41,7 @@ import axios from "axios";
 }
 
 const FormikLogin = withFormik({
+
   mapPropsToValues({ username, password }){
       return {
           username: username || "",
@@ -52,14 +52,19 @@ const FormikLogin = withFormik({
       username: Yup.string().required(),
       password: Yup.string().required()
   }),
-  handleSubmit(values, {setStatus}){
+  handleSubmit(values, {setStatus, props}){
       console.log("submitting", values);
-      axios.post('https://reqres.in/api/users', values)
+      
+      axiosWithAuth().post('/auth/login', values)
       .then(res => {
           console.log('success', res)
           setStatus(res.data)
+        localStorage.setItem('token', res.data.payload);
+        props.history.push('/dashboard');
       })
-      .catch(err => console.log(err.response));
+      .catch(err => {
+        console.log(err.response);
+      });
   }
 })(Login);
 export default FormikLogin;

@@ -33,7 +33,6 @@ const ProjectCard = ({ project }) => {
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
-          <Button size="small" color="primary">Edit</Button>
           <Button size="small" color="secondary">Delete</Button>
         </CardActions>
       </Card>

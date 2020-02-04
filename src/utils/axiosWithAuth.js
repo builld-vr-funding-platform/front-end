@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-// TODO: replace baseURL with our backend API
-
 const axiosWithAuth = () => {
   const token = localStorage.getItem('token');
 
