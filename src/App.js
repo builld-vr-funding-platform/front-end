@@ -6,6 +6,7 @@ import PrivateRoute from './utils/PrivateRoute';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import Signup from './components/Signup';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
@@ -18,6 +19,7 @@ function App() {
         <Switch>
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
           <Route path="/" component={Home} />
         </Switch>
       </Router>
