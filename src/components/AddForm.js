@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, TextField } from '@material-ui/core';
 
 const AddForm = () => {
+  const [projectInfo, setProjectInfo] = useState({
+    name: '',
+    goal: '',
+    description: '',
+    location: ''
+  });
+
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
