@@ -56,9 +56,9 @@ const FormikLogin = withFormik({
 
   mapPropsToValues({ username, password, email }){
       return {
+          email: email || "",
           // username: username || "",
-          password: password || "",
-          email: email || ""
+          password: password || ""
       };
   },
   validationSchema: Yup.object().shape({
@@ -75,7 +75,7 @@ const FormikLogin = withFormik({
           console.dir(res)
           setStatus(res.data)
 
-          localStorage.setItem('token', res.data.message);
+          localStorage.setItem('token', res.data.token);
           props.history.push('/dashboard');
       })
         .catch(err => {

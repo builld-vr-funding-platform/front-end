@@ -2,23 +2,23 @@ import React from 'react';
 import { Grid, Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles(() => ({
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+
+  cardContent: {
+    flexGrow: 1
+  },
+
+  cardActions: {
+    justifyContent: 'space-around'
+  }
+}));
+
 const ProjectCard = ({ project }) => {
-  const useStyles = makeStyles(() => ({
-    card: {
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-
-    cardContent: {
-      flexGrow: 1
-    },
-
-    cardActions: {
-      justifyContent: 'space-around'
-    }
-  }));
-
   const classes = useStyles();
 
   return (
