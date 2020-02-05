@@ -133,8 +133,8 @@ const SignUpForm = withFormik({
     axiosWithAuth()
       .post('/auth/register', values)
       .then(res => {
-        // console.log(res);
-        localStorage.setItem('token', res.data.token);
+        console.dir(res);
+        localStorage.setItem('token', res.data);
 
         setStatus(res.data);
 

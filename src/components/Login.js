@@ -45,7 +45,7 @@ const FormikLogin = withFormik({
   mapPropsToValues({ username, password }){
       return {
           username: username || "",
-          password: ""
+          password: password || ""
       };
   },
   validationSchema: Yup.object().shape({
