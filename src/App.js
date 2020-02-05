@@ -9,6 +9,9 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import ProjectView from "./components/ProjectView";
+
+
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/" component={Home} />
+          <Route path={"/project"} component={ProjectView}/>
         </Switch>
       </Router>
       </CssBaseline>
