@@ -134,10 +134,9 @@ const SignUpForm = withFormik({
       .post('/auth/register', values)
       .then(res => {
         console.dir(res);
-        localStorage.setItem('token', res.data);
-
         setStatus(res.data);
 
+        localStorage.setItem('token', res.data);
         props.history.push('/dashboard');
       })
       .catch(err => {

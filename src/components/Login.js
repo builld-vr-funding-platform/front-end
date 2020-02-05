@@ -55,16 +55,18 @@ const FormikLogin = withFormik({
   handleSubmit(values, {setStatus, props}){
       console.log("submitting", values);
       
-      axiosWithAuth().post('/auth/login', values)
-      .then(res => {
-          console.log('success', res)
+      axiosWithAuth()
+        .post('/auth/login', values)
+        .then(res => {
+          console.dir('success', res)
           setStatus(res.data)
-        localStorage.setItem('token', res.data.payload);
-        props.history.push('/dashboard');
+
+          localStorage.setItem('token', res.data);
+          props.history.push('/dashboard');
       })
-      .catch(err => {
-        console.log(err.response);
-      });
+        .catch(err => {
+          console.log(err.response);
+        });
   }
 })(Login);
 export default FormikLogin;
