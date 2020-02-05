@@ -7,9 +7,9 @@ import { fetchProjects } from '../actions/projectsActions';
 import ProjectCard from '../components/ProjectCard';
 
 const Dashboard = () => {
-  const projects = useSelector(state => state.projects);
-  const isFetching = useSelector(state => state.isFetching);
-  const dispatch = useDispatch();
+    const projects = useSelector(state => state.projects);
+    const isFetching = useSelector(state => state.isFetching);
+    const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProjects());

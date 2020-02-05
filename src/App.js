@@ -10,6 +10,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import AddProject from './components/AddProject';
+import ProjectView from "./components/ProjectView";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/" component={Home} />
+          <Route path={"/project"} component={ProjectView}/>
         </Switch>
         </Container>
       </Router>

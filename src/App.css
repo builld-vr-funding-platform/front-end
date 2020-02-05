@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.projectView {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.titleHead {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
