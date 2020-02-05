@@ -5,9 +5,12 @@ const ProjectView = project => {
       <div className={'projectView'}>
           <div className={'titleHead'}>
               <h1>{project.name}</h1>
-              <h3>{project.author}</h3>
-              <img/>
-              <p>{project.summary}</p>
+              <h3>{project.location}</h3>
+              <img src={project.image}/>
+              <h2>{project.funding_goal}</h2>
+              <h3>Funding received: {project.amount}</h3>
+              <p>{project.description}</p>
+              <h3>{project.email}</h3>
               <div className={'buttons'}>
                   <button>Invest</button>
                   <button>Make an Offer</button>
