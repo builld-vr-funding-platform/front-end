@@ -16,16 +16,16 @@ const Navbar = () => {
 
   return (
     <div>
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h5" className={classes.title} align="left">
-          VR Funding Platform
-        </Typography>
-        <Button color="inherit" onClick={() => history.push('/dashboard')}>My Projects</Button>{'   '}
-        <Button color="inherit" onClick={() => history.push('/login')}>Login</Button>{'   '}
-        <Button color="inherit" onClick={() => history.push('/signup')}>Sign Up</Button>
-      </Toolbar>
-    </AppBar>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h5" className={classes.title} align="left">
+            VR Funding Platform
+          </Typography>
+          <Button color="inherit" onClick={() => history.push('/dashboard')}>My Projects</Button>{'   '}
+          <Button color="inherit" onClick={() => history.push('/login')}>Login</Button>{'   '}
+          <Button color="inherit" onClick={() => history.push('/signup')}>Sign Up</Button>
+        </Toolbar>
+      </AppBar>
     </div>
   );
 }
