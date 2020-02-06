@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { LinearProgress, Fab } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import axiosWithAuth from '../utils/axiosWithAuth';
+
+import EditForm from './EditForm';
 
 const useStyles = makeStyles(theme => ({
     editButton: {
@@ -20,9 +22,9 @@ const ProjectView = () => {
     const classes = useStyles();
     
     let { id } = useParams();
-    let history = useHistory();
     
     const [project, setProject] = useState(null);
+    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         fetchProject(id);
@@ -40,7 +42,7 @@ const ProjectView = () => {
 
   return (
     <>
-        {project ? (
+        {project && !isEditing && (
             <div className={'projectView'}>
                 <div className={'titleHead'}>
                     <h1>{project.name}</h1>
@@ -66,14 +68,16 @@ const ProjectView = () => {
                 <Fab 
                     variant="extended" 
                     className={classes.editButton} 
-                    onClick={() => history.push(`/editproject/${project.id}`)}
+                    onClick={() => setIsEditing(true)}
                 >
                     <EditIcon className={classes.editIcon}/>
                     Edit Project
                 </Fab>
 
             </div>
-        ) : (<LinearProgress />)}
+        )}
+        {!project && (<LinearProgress />)}
+        {isEditing && (<EditForm project={project} setProject={setProject} setIsEditing={setIsEditing} />)}
     </>
   );
 };
