@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { Grid, Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import DeleteAlert from './DeleteAlert';
+
 const useStyles = makeStyles(() => ({
   card: {
     height: '100%',
@@ -37,7 +39,7 @@ const ProjectCard = ({ project }) => {
         </CardContent>
         <CardActions className={classes.cardActions}>
           <Button size="small" color="primary" onClick={() => history.push(`/projects/${project.id}`)}>View</Button>
-          <Button size="small" color="secondary">Delete</Button>
+          <DeleteAlert projectName={project.name} projectId={project.id} />
         </CardActions>
       </Card>
     </Grid>

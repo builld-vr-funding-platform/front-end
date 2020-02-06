@@ -28,9 +28,7 @@ export const fetchUserProjects = () => dispatch => {
         .get('/crud/read')
         .then(res => {
             // console.dir(res);
-            setTimeout(() => {
-                dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: res.data });
-            }, 3000);
+            dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: res.data });
         })
         .catch(err => {
             console.log(err);
