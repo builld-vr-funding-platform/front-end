@@ -1,50 +1,104 @@
 import React, { useState } from 'react';
-import { Grid, TextField } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import { Grid, TextField, Button } from '@material-ui/core';
+import axiosWithAuth from '../utils/axiosWithAuth';
+
+const useStyles = makeStyles(theme => ({
+  button: {
+    marginTop: theme.spacing(3)
+  }
+}))
 
 const AddForm = () => {
+  const classes = useStyles();
+
   const [projectInfo, setProjectInfo] = useState({
     name: '',
-    goal: '',
+    funding_goal: '',
     description: '',
     location: ''
   });
 
+  let history = useHistory();
+
+  const handleChange = evt => {
+    evt.persist();
+
+    setProjectInfo({
+      ...projectInfo,
+      [evt.target.name]: evt.target.value
+    })
+  };
+
+  const handleSubmit = evt => {
+    evt.preventDefault();
+
+    axiosWithAuth()
+      .post('/crud/read', projectInfo)
+      .then(res => {
+        console.dir(res);
+        history.push('/dashboard');
+      })
+      .catch(err => {
+        console.dir(err);
+      });
+  };
+
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={12}>
-        <TextField 
-          label="Project name"
-          name="name"
-          required
-          autoFocus
-          fullWidth
-        />
+    <form onSubmit={handleSubmit}>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <TextField 
+            label="Project name"
+            name="name"
+            value={projectInfo.name}
+            onChange={handleChange}
+            required
+            autoFocus
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField 
+            label="Funding goal"
+            name="funding_goal"
+            value={projectInfo.goal}
+            onChange={handleChange}
+            required
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField 
+            label="Description"
+            name="description"
+            value={projectInfo.description}
+            onChange={handleChange}
+            required
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField 
+            label="Location"
+            name="location"
+            value={projectInfo.location}
+            onChange={handleChange}
+            required
+            fullWidth
+          />
+        </Grid>
       </Grid>
-      <Grid item xs={12}>
-        <TextField 
-          label="Funding goal"
-          name="name"
-          required
-          fullWidth
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField 
-          label="Description"
-          name="description"
-          required
-          fullWidth
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField 
-          label="Location"
-          name="location"
-          required
-          fullWidth
-        />
-      </Grid>
-    </Grid>
+      <Button 
+        variant="contained"
+        color="primary"
+        onClick={handleSubmit}
+        className={classes.button}
+      >
+        Submit Project
+      </Button>
+    </form>
   );
 };
 

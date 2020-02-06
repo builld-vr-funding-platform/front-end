@@ -29,7 +29,7 @@ const ProjectCard = ({ project }) => {
             {project.name}
           </Typography>
           <Typography>
-            {project.type}
+            {project.funding_goal}
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
