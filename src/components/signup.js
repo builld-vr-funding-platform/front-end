@@ -1,4 +1,5 @@
 import React from "react";
+import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field} from "formik";
 import * as yup from "yup";
 import styled from "styled-components";
@@ -27,11 +28,11 @@ const Beef = styled.div`
 
 const Signup = ({values, errors, touched, status}) => {
 
-  // const [user, setUser] = useState([]); 
+  const [user, setUser] = useState([]); 
 
-  // useEffect(() => {
-  //   status && setUser(user => [...user, status]);
-  // }, [status]);
+  useEffect(() => {
+    status && setUser(user => [...user, status]);
+   }, [status]);
 
   return (
     <div className="All">
