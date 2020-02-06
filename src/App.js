@@ -20,6 +20,7 @@ function App() {
         <Navbar />
         <Container maxWidth="md">
         <Switch>
+          <PrivateRoute path="/projects/:id" component={ProjectView} />
           <PrivateRoute path="/addproject" component={AddProject} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route path="/login" component={Login} />

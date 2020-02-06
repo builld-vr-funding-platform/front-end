@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Grid, Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -21,6 +22,8 @@ const useStyles = makeStyles(() => ({
 const ProjectCard = ({ project }) => {
   const classes = useStyles();
 
+  let history = useHistory();
+
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card className={classes.card}>
@@ -33,6 +36,7 @@ const ProjectCard = ({ project }) => {
           </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>
+          <Button size="small" color="primary" onClick={() => history.push(`/projects/${project.id}`)}>View</Button>
           <Button size="small" color="secondary">Delete</Button>
         </CardActions>
       </Card>
