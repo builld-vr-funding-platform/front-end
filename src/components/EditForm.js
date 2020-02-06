@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid, TextField, Button } from '@material-ui/core';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -22,7 +24,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const EditForm = ({ project, setProject, setIsEditing }) => {
+  // TODO: option to go to dashboard or project view
+
   const classes = useStyles();
+
+  let { id } = useParams();
 
   const [projectToEdit, setProjectToEdit] = useState(JSON.parse(JSON.stringify(project, (key, value) => {
     return value === null ? '' : value;
@@ -38,7 +44,18 @@ const EditForm = ({ project, setProject, setIsEditing }) => {
   };
 
   const handleSubmit = evt => {
+    evt.preventDefault();
 
+    axiosWithAuth()
+      .put(`/crud/${id}`, projectToEdit)
+      .then(res => {
+        console.dir(res);
+        setProject(projectToEdit);
+        setIsEditing(false);
+      })
+      .catch(err => {
+        console.dir(err);
+      });
   };
 
   return (
@@ -49,7 +66,7 @@ const EditForm = ({ project, setProject, setIsEditing }) => {
         <Typography component="h1" variant="h4">
           Edit Project
         </Typography>
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField 
@@ -108,7 +125,6 @@ const EditForm = ({ project, setProject, setIsEditing }) => {
             type="submit"
             variant="contained"
             color="primary"
-            onClick={handleSubmit}
             className={classes.button}
           >
             Submit Edit
