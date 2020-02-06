@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid, TextField, Button } from '@material-ui/core';
 
@@ -21,22 +21,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const EditForm = () => {
+const EditForm = ({ project, setProject, setIsEditing }) => {
   const classes = useStyles();
 
-  const [projectInfo, setProjectInfo] = useState({
-    name: '',
-    funding_goal: '',
-    description: '',
-    location: '',
-    image: ''
-  });
+  const [projectToEdit, setProjectToEdit] = useState(JSON.parse(JSON.stringify(project, (key, value) => {
+    return value === null ? '' : value;
+  })));
 
   const handleChange = evt => {
     evt.persist();
 
-    setProjectInfo({
-      ...projectInfo,
+    setProjectToEdit({
+      ...projectToEdit,
       [evt.target.name]: evt.target.value
     })
   };
@@ -46,6 +42,8 @@ const EditForm = () => {
   };
 
   return (
+    <>
+    {projectToEdit && (
     <Container maxWidth="sm">
       <div className={classes.paper}>
         <Typography component="h1" variant="h4">
@@ -58,7 +56,7 @@ const EditForm = () => {
                 label="Project name"
                 name="name"
                 variant="outlined"
-                value={projectInfo.name}
+                value={projectToEdit.name}
                 onChange={handleChange}
                 required
                 autoFocus
@@ -70,7 +68,7 @@ const EditForm = () => {
                 label="Funding goal"
                 name="funding_goal"
                 variant="outlined"
-                value={projectInfo.goal}
+                value={projectToEdit.funding_goal}
                 onChange={handleChange}
                 fullWidth
               />
@@ -80,7 +78,7 @@ const EditForm = () => {
                 label="Description"
                 name="description"
                 variant="outlined"
-                value={projectInfo.description}
+                value={projectToEdit.description}
                 onChange={handleChange}
                 fullWidth
               />
@@ -90,7 +88,7 @@ const EditForm = () => {
                 label="Location"
                 name="location"
                 variant="outlined"
-                value={projectInfo.location}
+                value={projectToEdit.location}
                 onChange={handleChange}
                 fullWidth
               />
@@ -100,7 +98,7 @@ const EditForm = () => {
                 label="Image URL"
                 name="image"
                 variant="outlined"
-                value={projectInfo.image}
+                value={projectToEdit.image}
                 onChange={handleChange}
                 fullWidth
               />
@@ -113,11 +111,13 @@ const EditForm = () => {
             onClick={handleSubmit}
             className={classes.button}
           >
-        Submit Edit
-      </Button>
+            Submit Edit
+          </Button>
         </form>
       </div>
     </Container>
+  )}
+  </>
   );
 };
 
