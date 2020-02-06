@@ -57,14 +57,6 @@ const ProjectView = () => {
                         <button>Make an Offer</button>
                     </div>
                 </div>
-                <div className={'campaign'}>
-                    {project.campaignText}
-                    <div className={'buttons'}>
-                        <button>Invest</button>
-                        <button>Make an Offer</button>
-                    </div>
-                </div>
-
                 <Fab 
                     variant="extended" 
                     className={classes.editButton} 
