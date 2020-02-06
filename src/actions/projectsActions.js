@@ -4,8 +4,6 @@ export const FETCH_PROJECTS_START = 'FETCH_PROJECTS_START';
 export const FETCH_PROJECTS_SUCCESS = 'FETCH_PROJECTS_SUCCESS';
 export const FETCH_PROJECTS_FAILURE = 'FETCH_PROJECTS_FAILURE';
 
-// TODO: remove setTimeout (intended to test fetching state)
-
 export const fetchProjects = () => dispatch => {
     dispatch({ type: FETCH_PROJECTS_START });
 
