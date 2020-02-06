@@ -2,13 +2,14 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axiosWithAuth from '../utils/axiosWithAuth';
+import React, { useState, useEffect } from "react";
 
   const Login = ({ errors, touched, status }) => {
-    // const [login, setLogin] = useState([]);
-    // useEffect(() => {
-    //   console.log("status has changed", status);
-    //   status && setLogin(login => [...login, status]);
-    // }, [status]);
+      const [login, setLogin] = useState([]);
+      useEffect(() => {
+      console.log("status has changed", status);
+      status && setLogin(login => [...login, status]);
+      }, [status]);
 
   return (
       <div>
