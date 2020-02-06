@@ -50,3 +50,7 @@
   align-content: center;
   justify-content: center;
 }
+
+button {
+  margin: .5rem;
+}

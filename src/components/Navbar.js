@@ -23,7 +23,7 @@ const Navbar = () => {
     <div>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h5" className={classes.title} align="left">
+          <Typography onClick={() => history.push('/')} variant="h5" className={classes.title} align="left">
             VR Funding Platform
           </Typography>
           <Button color="inherit" onClick={() => history.push('/dashboard')}>My Projects</Button>{'   '}
