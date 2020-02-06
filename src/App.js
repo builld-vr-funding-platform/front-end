@@ -11,6 +11,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import AddProject from './components/AddProject';
 import ProjectView from "./components/ProjectView";
+import EditForm from './components/EditForm';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Navbar />
         <Container maxWidth="md">
         <Switch>
+          <PrivateRoute path="/editproject/:id" component={EditForm} />
+          <PrivateRoute path="/projects/:id" component={ProjectView} />
           <PrivateRoute path="/addproject" component={AddProject} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route path="/login" component={Login} />

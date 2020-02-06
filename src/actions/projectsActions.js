@@ -1,20 +1,16 @@
-import axios from 'axios';
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 export const FETCH_PROJECTS_START = 'FETCH_PROJECTS_START';
 export const FETCH_PROJECTS_SUCCESS = 'FETCH_PROJECTS_SUCCESS';
 export const FETCH_PROJECTS_FAILURE = 'FETCH_PROJECTS_FAILURE';
 
-/* TODO: replace url with our backend API
-** TODO: remove setTimeout (intended to test fetching state) */
-
-//https://sprint-challenge-authenticat.herokuapp.com/api/projects
+// TODO: remove setTimeout (intended to test fetching state)
 
 export const fetchProjects = () => dispatch => {
     dispatch({ type: FETCH_PROJECTS_START });
 
-    axios
-        .get('https://api.open5e.com/magicitems' )
+    axiosWithAuth()
+        .get('crud/read' )
         .then(res => {
             setTimeout(() => {
                 dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: res.data.results });
@@ -29,11 +25,12 @@ export const fetchProjects = () => dispatch => {
 export const fetchUserProjects = () => dispatch => {
     dispatch({type: FETCH_PROJECTS_START});
 
-    axiosWithAuth
+    axiosWithAuth()
         .get('/crud/read')
         .then(res => {
+            // console.dir(res);
             setTimeout(() => {
-                dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: res.data.results });
+                dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: res.data });
             }, 3000);
         })
         .catch(err => {

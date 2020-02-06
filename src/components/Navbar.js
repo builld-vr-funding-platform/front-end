@@ -14,6 +14,11 @@ const Navbar = () => {
 
   const history = useHistory();
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    history.push('login');
+  };
+
   return (
     <div>
       <AppBar position="static">
@@ -24,6 +29,7 @@ const Navbar = () => {
           <Button color="inherit" onClick={() => history.push('/dashboard')}>My Projects</Button>{'   '}
           <Button color="inherit" onClick={() => history.push('/login')}>Login</Button>{'   '}
           <Button color="inherit" onClick={() => history.push('/signup')}>Sign Up</Button>
+          <Button color="inherit" onClick={() => logout()}>Sign Out</Button>
         </Toolbar>
       </AppBar>
     </div>
