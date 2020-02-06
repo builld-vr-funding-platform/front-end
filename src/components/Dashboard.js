@@ -15,7 +15,7 @@ const Dashboard = () => {
     dispatch(fetchUserProjects());
   }, [dispatch]);
 
-    let history = useHistory();
+  let history = useHistory();
 
   return (
       <>
