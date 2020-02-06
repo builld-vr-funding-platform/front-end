@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Typography, Grid, TextField, Button } from '@material-ui/core';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -21,44 +23,57 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const EditForm = () => {
+const EditForm = ({ project, setProject, setIsEditing }) => {
+  // TODO: option to go to dashboard or project view
+
   const classes = useStyles();
 
-  const [projectInfo, setProjectInfo] = useState({
-    name: '',
-    funding_goal: '',
-    description: '',
-    location: '',
-    image: ''
-  });
+  let { id } = useParams();
+
+  const [projectToEdit, setProjectToEdit] = useState(JSON.parse(JSON.stringify(project, (key, value) => {
+    return value === null ? '' : value;
+  })));
 
   const handleChange = evt => {
     evt.persist();
 
-    setProjectInfo({
-      ...projectInfo,
+    setProjectToEdit({
+      ...projectToEdit,
       [evt.target.name]: evt.target.value
     })
   };
 
   const handleSubmit = evt => {
+    evt.preventDefault();
 
+    axiosWithAuth()
+      .put(`/crud/${id}`, projectToEdit)
+      .then(res => {
+        console.dir(res);
+        setProject(projectToEdit);
+        setIsEditing(false);
+      })
+      .catch(err => {
+        console.dir(err);
+      });
   };
 
   return (
+    <>
+    {projectToEdit && (
     <Container maxWidth="sm">
       <div className={classes.paper}>
         <Typography component="h1" variant="h4">
           Edit Project
         </Typography>
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField 
                 label="Project name"
                 name="name"
                 variant="outlined"
-                value={projectInfo.name}
+                value={projectToEdit.name}
                 onChange={handleChange}
                 required
                 autoFocus
@@ -70,7 +85,7 @@ const EditForm = () => {
                 label="Funding goal"
                 name="funding_goal"
                 variant="outlined"
-                value={projectInfo.goal}
+                value={projectToEdit.funding_goal}
                 onChange={handleChange}
                 fullWidth
               />
@@ -80,7 +95,7 @@ const EditForm = () => {
                 label="Description"
                 name="description"
                 variant="outlined"
-                value={projectInfo.description}
+                value={projectToEdit.description}
                 onChange={handleChange}
                 fullWidth
               />
@@ -90,7 +105,7 @@ const EditForm = () => {
                 label="Location"
                 name="location"
                 variant="outlined"
-                value={projectInfo.location}
+                value={projectToEdit.location}
                 onChange={handleChange}
                 fullWidth
               />
@@ -100,7 +115,7 @@ const EditForm = () => {
                 label="Image URL"
                 name="image"
                 variant="outlined"
-                value={projectInfo.image}
+                value={projectToEdit.image}
                 onChange={handleChange}
                 fullWidth
               />
@@ -110,14 +125,15 @@ const EditForm = () => {
             type="submit"
             variant="contained"
             color="primary"
-            onClick={handleSubmit}
             className={classes.button}
           >
-        Submit Edit
-      </Button>
+            Submit Edit
+          </Button>
         </form>
       </div>
     </Container>
+  )}
+  </>
   );
 };
 
