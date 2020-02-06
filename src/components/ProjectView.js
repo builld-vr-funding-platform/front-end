@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     editIcon: {
         marginRight: theme.spacing(1)
     }
-}))
+}));
 
 const ProjectView = () => {
     const classes = useStyles();
