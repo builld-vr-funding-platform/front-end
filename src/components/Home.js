@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {fetchProjects} from "../actions/projectsActions";
-import {useHistory} from "react-router-dom";
 import {Grid} from "@material-ui/core";
 import ProjectCard from "./ProjectCard";
 
@@ -14,7 +13,6 @@ const Home = () => {
         dispatch(fetchProjects());
     }, [dispatch]);
 
-    let history = useHistory();
 
     return (
         <>

@@ -12,9 +12,8 @@ export const fetchProjects = () => dispatch => {
     axios
         .get('https://sprint-challenge-authenticat.herokuapp.com/api/projects' )
         .then(res => {
-            setTimeout(() => {
-                dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: res.data.results });
-            }, 3000);
+            console.log(res);
+            dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: res.data});
         })
         .catch(err => {
             console.log(err);
