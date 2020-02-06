@@ -6,8 +6,8 @@ import AddForm from './AddForm';
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(3),
-    padding: theme.spacing(2)
+    marginTop: theme.spacing(4),
+    padding: theme.spacing(3)
   }
 }));
 

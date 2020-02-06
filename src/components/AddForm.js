@@ -6,12 +6,14 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
   button: {
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2)
   }
 }))
 
 const AddForm = () => {
   const classes = useStyles();
+  let history = useHistory();
 
   const [projectInfo, setProjectInfo] = useState({
     name: '',
@@ -19,8 +21,6 @@ const AddForm = () => {
     description: '',
     location: ''
   });
-
-  let history = useHistory();
 
   const handleChange = evt => {
     evt.persist();
@@ -35,7 +35,7 @@ const AddForm = () => {
     evt.preventDefault();
 
     axiosWithAuth()
-      .post('/crud/read', projectInfo)
+      .post('/crud', projectInfo)
       .then(res => {
         console.dir(res);
         history.push('/dashboard');
@@ -55,8 +55,8 @@ const AddForm = () => {
             value={projectInfo.name}
             onChange={handleChange}
             required
-            autoFocus
             fullWidth
+            autoFocus
           />
         </Grid>
         <Grid item xs={12}>
@@ -91,6 +91,7 @@ const AddForm = () => {
         </Grid>
       </Grid>
       <Button 
+        type="submit"
         variant="contained"
         color="primary"
         onClick={handleSubmit}
