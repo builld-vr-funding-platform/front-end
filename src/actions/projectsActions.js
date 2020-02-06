@@ -1,5 +1,5 @@
 import axiosWithAuth from "../utils/axiosWithAuth";
-
+import axios from 'axios'
 export const FETCH_PROJECTS_START = 'FETCH_PROJECTS_START';
 export const FETCH_PROJECTS_SUCCESS = 'FETCH_PROJECTS_SUCCESS';
 export const FETCH_PROJECTS_FAILURE = 'FETCH_PROJECTS_FAILURE';
@@ -9,12 +9,11 @@ export const FETCH_PROJECTS_FAILURE = 'FETCH_PROJECTS_FAILURE';
 export const fetchProjects = () => dispatch => {
     dispatch({ type: FETCH_PROJECTS_START });
 
-    axiosWithAuth()
-        .get('crud/read' )
+    axios
+        .get('https://sprint-challenge-authenticat.herokuapp.com/api/projects' )
         .then(res => {
-            setTimeout(() => {
-                dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: res.data.results });
-            }, 3000);
+            console.log(res);
+            dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: res.data});
         })
         .catch(err => {
             console.log(err);
