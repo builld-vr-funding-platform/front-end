@@ -1,29 +1,17 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Typography, Button } from '@material-ui/core';
+import { Paper, Typography } from '@material-ui/core';
 
 import AddForm from './AddForm';
 
 const useStyles = makeStyles(theme => ({
-  layout: {
-
-  },
-
   paper: {
-    marginTop: theme.spacing(3),
-    padding: theme.spacing(2)
-  },
-
-  button: {
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(4),
+    padding: theme.spacing(3)
   }
-}))
+}));
 
 const AddProject = () => {
-  const handleAdd = () => {
-
-  };
-
   const classes = useStyles();
 
   return (
@@ -33,14 +21,6 @@ const AddProject = () => {
           New Project
         </Typography>
         <AddForm />
-        <Button 
-          variant="contained"
-          color="primary"
-          onClick={handleAdd}
-          className={classes.button}
-        >
-          Submit Project
-        </Button>
       </Paper>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { CircularProgress, Grid, Button } from '@material-ui/core';
-import { fetchProjects } from '../actions/projectsActions';
+import { fetchUserProjects } from '../actions/projectsActions';
 
 import ProjectCard from '../components/ProjectCard';
 
@@ -12,7 +12,7 @@ const Dashboard = () => {
     const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProjects());
+    dispatch(fetchUserProjects());
   }, [dispatch]);
   
   let history = useHistory();
@@ -26,7 +26,7 @@ const Dashboard = () => {
       )}
       {!isFetching && projects && (
         <Grid container spacing={4}>
-          {projects.map(project => <ProjectCard key={project.slug} project={project} />)}
+          {projects.map(project => <ProjectCard key={project.id} project={project} />)}
         </Grid>
       )}
     </>
