@@ -47,9 +47,10 @@ const ProjectView = () => {
                 <div className={'titleHead'}>
                     <h1>{project.name}</h1>
                     <h3>{project.location}</h3>
-                    {project.image ? <img src={project.image} alt={project.name} /> : null}
-                    <h2>{project.funding_goal}</h2>
-                    <h3>Funding received: {project.amount}</h3>
+                    <img src={'https://images.unsplash.com/photo-1496589180022-bd1c15f3ea6a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1530&q=80'}
+                         width={'100%'} height={'auto'} alt={project.name} />
+                    <h2>${project.funding_goal}</h2>
+                    <h3>Funding received: {project.amount ? project.amount : '$0'}</h3>
                     <p>{project.description}</p>
                     <h3>{project.email}</h3>
                     <div className={'buttons'}>
@@ -57,14 +58,6 @@ const ProjectView = () => {
                         <button>Make an Offer</button>
                     </div>
                 </div>
-                <div className={'campaign'}>
-                    {project.campaignText}
-                    <div className={'buttons'}>
-                        <button>Invest</button>
-                        <button>Make an Offer</button>
-                    </div>
-                </div>
-
                 <Fab 
                     variant="extended" 
                     className={classes.editButton} 
