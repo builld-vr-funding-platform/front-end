@@ -27,11 +27,11 @@ const Beef = styled.div`
 
 const Signup = ({values, errors, touched, status}) => {
 
-  const [user, setUser] = useState([]); 
+   const [user, setUser] = useState([]); 
 
-  useEffect(() => {
-    status && setUser(user => [...user, status]);
-   }, [status]);
+   useEffect(() => {
+  status && setUser(user => [...user, status]);
+    }, [status]);
 
   return (
     <div className="All">
