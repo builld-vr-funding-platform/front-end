@@ -1,5 +1,4 @@
-/* reducers/index.js
-** TODO: use combineReducers when we have more than one reducer */
+// reducers/index.js
 
 import {
     FETCH_PROJECTS_START,
