@@ -23,8 +23,6 @@ const Beef = styled.div`
 //   margin-left: 30px;
 // `;
 
-
-
 const Signup = ({values, errors, touched, status}) => {
 
   const [user, setUser] = useState([]); 
@@ -136,8 +134,7 @@ const SignUpForm = withFormik({
         console.dir(res);
         setStatus(res.data);
 
-        localStorage.setItem('token', res.data);
-        props.history.push('/dashboard');
+        props.history.push('/login');
       })
       .catch(err => {
         console.log(err.response)
