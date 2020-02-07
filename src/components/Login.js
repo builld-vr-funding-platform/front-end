@@ -1,19 +1,31 @@
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axiosWithAuth from '../utils/axiosWithAuth';
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+
+
+const Beef = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 90px
+`;
+
 
   const Login = ({ errors, touched, status }) => {
-      const [login, setLogin] = useState([]);
+     const [login, setLogin] = useState([]);
       useEffect(() => {
-      console.log("status has changed", status);
-      status && setLogin(login => [...login, status]);
-      }, [status]);
+     console.log("status has changed", status);
+     status && setLogin(login => [...login, status]);
+     }, [status]);
 
   return (
-      <div>
+      <div className="All">
+        
           <h2>Welcome Back!</h2>
           <Form>
+            <Beef>
               {/* <label htmlFor="username">username</label>
               <Field
                   id="username"
@@ -24,28 +36,37 @@ import React, { useState, useEffect } from "react";
                 {touched.username && errors.username && <p 
                 className="errors">{errors.username}</p>} */}
 
-              <label htmlFor="email">email</label>
+              <label htmlFor="email"></label>
               <Field 
+                className="beef1"
                 id="email"
                 type="text"
-                placeholder="email"
+                placeholder="Email"
                 name="email"
               />
               {touched.email && errors.email && (
                 <p className="errors">{errors.email}</p>
               )}
 
-              <label htmlFor="password">password</label>
+              <label htmlFor="password"></label>
               <Field
+                  className="beef1"
                   id="password"
                   type="text"
-                  placeholder="password"
+                  placeholder="Password"
                   name="password"
               />
               {touched.password && errors.password && <p 
                 className="errors">{errors.password}</p>}
-              <button type="submit">Login</button>
-              
+ 
+              </Beef>
+
+              <button type="submit" className="button"> Log in</button>
+
+        <div className="signin">
+        <span> Don't have an account?</span> <Link to="/signup">sign up here</Link>  
+        </div> 
+
           </Form>
     
       </div>
