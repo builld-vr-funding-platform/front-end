@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {Button, CircularProgress, Grid} from "@material-ui/core";
+import { Button, CircularProgress, Grid } from '@material-ui/core';
 import { fetchUserProjects } from '../actions/projectsActions';
 
 import ProjectCard from '../components/ProjectCard';
-import {useHistory} from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 const Dashboard = () => {
-    const projects = useSelector(state => state.projects);
-    const isFetching = useSelector(state => state.isFetching);
-    const dispatch = useDispatch();
+  const projects = useSelector((state) => state.projects);
+  const isFetching = useSelector((state) => state.isFetching);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchUserProjects());
@@ -18,18 +18,19 @@ const Dashboard = () => {
   let history = useHistory();
 
   return (
-      <>
-          <h1>My Projects</h1>
-          <Button onClick={() => history.push('/addproject')}>Add Project</Button><br />
-          {isFetching && (
-              <CircularProgress />
-          )}
-          {!isFetching && projects && (
-              <Grid container spacing={4}>
-                  {projects.map(project => <ProjectCard key={project.id} project={project} />)}
-              </Grid>
-          )}
-      </>
+    <>
+      <h1>My Projects</h1>
+      <Button onClick={() => history.push('/addproject')}>Add Project</Button>
+      <br />
+      {isFetching && <CircularProgress />}
+      {!isFetching && projects && (
+        <Grid container spacing={4}>
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </Grid>
+      )}
+    </>
   );
 };
 
